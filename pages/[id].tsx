@@ -1,17 +1,18 @@
 import apolloClient from "../src/utils/apolloClient";
-import {gql} from "@apollo/client";
 import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
 import { routesStyles} from "../styles/theme";
 import {GET_ALL_BY_ID, GET_BY_ID} from "../src/utils/queries";
+import {GetStaticPaths, GetStaticProps} from "next";
+import {FC, ReactElement} from "react";
 
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const {data} = await apolloClient.query({
         query: GET_BY_ID,
     })
 
     const missions = data.launchesPast;
-    const paths = missions.map((mission) => {
+    const paths = missions.map((mission: { id: any; }) => {
         return {
             params: {id: mission.id}
         }
@@ -22,23 +23,23 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps(context) {
-    const id = context.params.id;
+export const getStaticProps: GetStaticProps = async (context) => {
+    const id = context?.params?.id;
 
-    console.log("id: ", id);
     const {data} = await apolloClient.query({
         query: GET_ALL_BY_ID,
         variables: {id}
     })
-    const launch = data.launchesPast.filter(l => l.id === id);
-    console.log("the right launch: ", launch)
+    const launch = data.launchesPast.filter((l: { id: string }) => l.id === id);
     return {
         props: {launches: launch}
     }
 }
 
-
-const Mission = ({launches}) => {
+type Props = {
+    launches: any
+}
+const Mission: FC<Props> = ({launches}): ReactElement=> {
     const classes = routesStyles();
     const launch = launches[0];
 

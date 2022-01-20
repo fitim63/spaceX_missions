@@ -7,4 +7,4 @@ Used `NextJS`, `Apollo Client` and `Material-UI`.
 - `npm` version used `8.1.2`
 - `NextJS` version used `12.0.8`
 
-#### Branch `typescript_branch` holds the same app converted into typescript
+#### In the branch `typescript_branch`, the app is converted into typescript

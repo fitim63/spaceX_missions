@@ -44,8 +44,6 @@ const Mission: FC<Props> = ({launches}): ReactElement=> {
     const launch = launches[0];
 
     return (
-        //Not all missions have images, so some image placeholders might be empty
-        //Not all missions have details
         <div className={classes.main}>
             <Card sx={{maxWidth: 500}}>
                 <CardActionArea>

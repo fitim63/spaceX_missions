@@ -4,7 +4,7 @@ export const useStyles = makeStyles(theme => ({
     container: {
         padding: '0 2rem',
     },
-    title:{
+    title: {
         textAlign: 'center',
         margin: 0,
         fontSize: '3rem',
@@ -42,6 +42,33 @@ export const useStyles = makeStyles(theme => ({
     image: {
         width: '100%',
         height: 150,
+    },
+    voyager: {
+        margin: 30,
+        display: "flex",
+        justifyContent: 'center'
+    },
+    apodContainer: {
+        margin: 20,
+        padding: 20,
+        display: 'flex',
+        flexDirection: "row",
+        alignItems: "stretch",
+        "@media (max-width: 1000px)": {
+            flexDirection: "column-reverse",
+            alignItems: "center",
+        }
+    },
+    apod: {
+        marginLeft: 50,
+        display: 'flex',
+        flexDirection: "column",
+        justifyContent: 'center',
+        alignItems: "center",
+        order: 2,
+    },
+    explanation: {
+        order: 1,
     }
 }));
 
